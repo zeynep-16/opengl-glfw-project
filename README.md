@@ -15,7 +15,7 @@ Bu proje, **OpenGL** ve **GLFW** kütüphaneleri kullanılarak geliştirilmiş, 
 
 ## 📋 Proje Özellikleri
 
-- Tekne nesnesi, **birden fazla 3B temel geometrik şeklin** (küp, silindir, küre ve çizgisel yapılar) birleşimi kullanılarak modellenmiştir.  
+- Tekne nesnesi, **birden fazla 3B temel geometrik şeklin** (quads, silindir, ve triangles) birleşimi kullanılarak modellenmiştir.  
   Bu sayede karmaşık bir 3B model, temel yapı taşları üzerinden oluşturulmuştur.
 
 - Modelin parçaları **birbirinden bağımsız şekilde hareket edebilmektedir**.  
@@ -42,6 +42,7 @@ Bu proje, **OpenGL** ve **GLFW** kütüphaneleri kullanılarak geliştirilmiş, 
 - **macOS**
 
 ---
+
 
 
 
