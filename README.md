@@ -39,10 +39,10 @@ Bu proje, **OpenGL** ve **GLFW** kütüphaneleri kullanılarak geliştirilmiş, 
 - **C++**
 - **OpenGL**
 - **GLFW**
-- **GLUT / GLU** (gereken durumlarda)
 - **macOS**
 
 ---
 
-## 📁 Proje Yapısı
+
+
 
