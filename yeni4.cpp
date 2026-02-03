@@ -1,0 +1,131 @@
+#include <GL/glut.h>
+float xgotur = 0, ygotur = 0, zgotur = 0;
+int en = 200, boy = 200;
+float derece = 0;
+float xolcu = 1, yolcu = 1, zolcu = 1;
+void yanuzat(void)
+{
+glLoadIdentity();
+xolcu += 0.1;
+}
+ 
+void boyuzat(void)
+{
+glLoadIdentity();
+yolcu += 0.1;
+}
+ 
+void cevirsag(void)
+{
+glLoadIdentity();
+derece += 0.5;
+}
+ 
+void cevirsol(void)
+{
+glLoadIdentity();
+derece -= 0.5;
+}
+void gotursag(void)
+{
+glLoadIdentity();
+xgotur += 0.1;
+}
+void gotursol(void)
+{
+glLoadIdentity();
+xgotur -= 0.1;
+}
+ 
+void goturyuk(void)
+{
+glLoadIdentity();
+ygotur += 0.1;
+}
+void goturas(void)
+{
+glLoadIdentity();
+ygotur -= 0.1;
+}
+void specFunc(int key, int x, int y)
+{
+switch (key)
+{
+case GLUT_KEY_LEFT:gotursol(); break;
+case GLUT_KEY_RIGHT:gotursag(); break;
+case GLUT_KEY_UP:goturyuk(); break;
+case GLUT_KEY_DOWN:goturas(); break;
+ 
+ 
+}
+glutPostRedisplay();
+}
+void keyFunc(unsigned char key, int x, int y)
+{
+switch (key)
+{
+case'a':yanuzat(); break;
+case's':boyuzat(); break;
+case'z':cevirsol(); break;
+case'x':cevirsag(); break;
+ 
+}
+glutPostRedisplay();
+}
+ 
+void mouse(int key, int x, int y, int z)
+{
+switch (key)
+{
+case GLUT_LEFT_BUTTON:gotursol(); break;
+case GLUT_RIGHT_BUTTON:gotursag(); break;
+}
+glutPostRedisplay();
+}
+void ucbcokgen(void)
+{
+glColor3f(0.5, 0.1, 0.1);
+glRotatef(derece, 0.0, 1.0, 0.0);
+glScalef(xolcu, yolcu, zolcu);
+glTranslatef(xgotur,ygotur,zgotur);
+ 
+glutWireCube(1.0);
+ 
+}
+void ciz(void)
+{
+glClear(GL_COLOR_BUFFER_BIT);
+glColor3f(1.0, 1.0, 1.0);
+glLoadIdentity();
+gluLookAt(0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+ucbcokgen();
+glutSwapBuffers();
+}
+ 
+void reshape(int en, int boy)
+{
+glViewport(0, 0, en, boy);
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+gluPerspective(60, (float)en / (float)boy, 1.0, 100.0);
+glMatrixMode(GL_MODELVIEW);
+}
+int main(int argc, char** argv)
+{
+glutInit(&argc, argv);
+glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+glutInitWindowSize(en, boy);
+glutInitWindowPosition(0, 0);
+glutCreateWindow("3bcokgen2");
+glClearColor(1.0, 1.0, 1.0, 1.0);
+glShadeModel(GL_FLAT);
+glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+glutReshapeFunc(reshape);
+glutDisplayFunc(ciz);
+glutSpecialFunc(specFunc);
+ 
+glutMouseFunc(mouse);
+glutKeyboardFunc(keyFunc);
+glutMainLoop();
+return 0;
+}
